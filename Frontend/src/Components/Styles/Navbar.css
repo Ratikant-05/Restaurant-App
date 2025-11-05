@@ -1,0 +1,31 @@
+nav{
+  background-color: rgb(239, 49, 49);
+  height: 8vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-links{
+  margin-left: 12rem;
+}
+
+.nav-links a{
+  margin-left: 2rem;
+  text-decoration: none;
+  color: white;
+}
+.nav-btn a {
+  margin-left: 2rem;
+  text-decoration: none;
+  color: white;
+}
