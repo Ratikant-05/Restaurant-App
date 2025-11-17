@@ -15,12 +15,12 @@ const ImageSlider = () => {
       subtitle: "Fresh ingredients, amazing taste",
     },
     {
-      image: "/slider-2.jpg",
+      image: "/slider-3.jpg",
       title: "Fast Delivery",
       subtitle: "Get your food delivered in minutes",
     },
     {
-      image: "/slider-3.jpg",
+      image: "/slider-2.jpg",
       title: "Best Restaurants",
       subtitle: "Discover top-rated dining experiences",
     },

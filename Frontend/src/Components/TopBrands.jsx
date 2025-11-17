@@ -64,7 +64,7 @@ const TopBrands = () => {
 
   return (
     <div>
-          <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <div className="py-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-gray-900 mb-2">
           Top brands for you
