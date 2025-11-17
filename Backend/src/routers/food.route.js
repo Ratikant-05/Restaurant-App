@@ -1,5 +1,5 @@
 import express from 'express'
-import { postAddFoodItem, getAllFoodItems, getFoodItemById, getFoodItemsByRestaurant, updateFoodItem, deleteFoodItem, getFoodItemsByCusineCategory, getAllCusineCategories} from '../controllers/food.controller.js';
+import { postAddFoodItem, getAllFoodItems, getFoodItemById, getFoodItemsByRestaurant, updateFoodItem, deleteFoodItem, getFoodItemsByCusineCategory, getAllCusineCategories, postTopBrands, getAllTopBrands} from '../controllers/food.controller.js';
 import upload from '../middlewares/uploads.js';
 
 const router = express.Router()
@@ -13,6 +13,8 @@ router.put('/update-food-item/:foodId',updateFoodItem); //made
 router.delete('/delete-food-item/:foodId',deleteFoodItem); //made
 router.get('/get-food-by-category/:cusineCategory',getFoodItemsByCusineCategory); //made
 router.get('/getAllCusineCategories',getAllCusineCategories); //made
+router.post('/add-top-brands' ,upload.single("image"), postTopBrands);
+router.get('/getAllTopBrands' , getAllTopBrands);
 
 
 export default router;

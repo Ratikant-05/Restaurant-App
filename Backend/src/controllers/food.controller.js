@@ -1,4 +1,5 @@
 import FoodItem from "../models/food.Model.js";
+import Brand from "../models/Brand.Model.js";
 import mongoose from "mongoose";
 
 // get all food items
@@ -181,5 +182,56 @@ export const postAddFoodItem = async (req, res) => {
       msg: "Internal Server Error",
       error: err.message,
     });
+  }
+};
+
+export const postTopBrands = async (req, res) => {
+  try {
+    const { name, restaurantId, ownerId } = req.body;
+    console.log(req.body)
+    const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
+    if (!name || !restaurantId) {
+      return res.status(400).json({ msg: "Missing required fields" });
+    }
+    if (!mongoose.Types.ObjectId.isValid(restaurantId)) {
+      return res.status(400).json({ msg: "Invalid restaurant ID" });
+    }
+    if (!mongoose.Types.ObjectId.isValid(ownerId)) {
+      return res.status(400).json({ msg: "Invalid owner ID" });
+    }
+
+    const newBrand = await Brand.create({
+      name,
+      image: imagePath,
+      restaurantId: restaurantId,
+      ownerId: ownerId
+    });
+
+    res.status(201).json({
+      msg: "Brand added successfully",
+      data: newBrand,
+    });
+  } catch (err) {
+    console.error("Error adding brand:", err);
+    res.status(500).json({
+      msg: "Internal Server Error",
+      error: err.message,
+    });
+  }
+};
+
+export const getAllTopBrands = async (req, res) => {
+  try {
+    const Brands = await Brand.find()
+      .populate("restaurantId")
+      .populate("ownerId");
+
+    res.status(200).json({
+      msg: "All top brands fetched",
+      data: Brands,
+    });
+  } catch (err) {
+    console.error("Error fetching top brands:", err);
+    res.status(500).json({ msg: "Internal Server Error" });
   }
 };

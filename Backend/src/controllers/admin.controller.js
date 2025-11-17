@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 export const postRestaurant = async (req, res, next) => {
   try {
     const { name, address, email, contact } = req.body;
+     const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
     const { userId } = req.body;
 
     if (!name || !email || !address || !contact) {
@@ -36,6 +37,7 @@ export const postRestaurant = async (req, res, next) => {
       name,
       address,
       email,
+      image:imagePath,
       contact,
     });
 

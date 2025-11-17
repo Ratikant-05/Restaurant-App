@@ -18,7 +18,6 @@ const app = express();
 const _filename = fileURLToPath(import.meta.url) 
 const __dirname = path.dirname(_filename)
 
-// middlewares
 app.use(cookieParser())
 app.use(cors({
     origin:["http://localhost:5173"],
@@ -30,7 +29,7 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 
 // routes
-app.use('/auth',loginRouter) //done
+app.use('/auth',loginRouter)
 app.use('/food',foodRouter)
 app.use('/admin',adminRouter)
 app.use('/api',restaurantRouter)
@@ -38,7 +37,7 @@ app.use('/cart',cartRouter)
 app.use('/user',userRouter)
 app.use('/payment',paymentRouter)
 
-// Dbconnect and after that connecting the port
+
 const PORT = process.env.port
 mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.dbName}`)
 .then(()=>{
