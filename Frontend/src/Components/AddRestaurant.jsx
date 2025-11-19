@@ -59,6 +59,7 @@ const AddRestaurant = () => {
       }
 
       const response = await axios.post(
+        `${process.env.BASE_URL}/admin/admin-register` ||
         "http://localhost:4444/admin/admin-register",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }

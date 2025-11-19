@@ -38,12 +38,12 @@ function Navbar() {
       setIsSearching(true);
       try {
         const [restaurantsRes, foodItemsRes, cuisinesRes] = await Promise.all([
-          axios.get("http://localhost:4444/api/restaurants").catch(() => null),
+          axios.get(`${process.env.BASE_URL}/api/restaurants` || "http://localhost:4444/api/restaurants").catch(() => null),
           axios
-            .get("http://localhost:4444/food/get-all-food-items")
+            .get(`${process.env.BASE_URL}/food/get-all-food-items` || "http://localhost:4444/food/get-all-food-items")
             .catch(() => null),
           axios
-            .get("http://localhost:4444/food/getAllCusineCategories")
+            .get(`${process.env.BASE_URL}/food/getAllCusineCategories` || "http://localhost:4444/food/getAllCusineCategories")
             .catch(() => null),
         ]);
 

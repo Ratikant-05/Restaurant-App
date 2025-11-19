@@ -21,7 +21,7 @@ const SelectedRestaurant = () => {
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(
+        const response = await axios.get( `${process.env.BASE_URL}/api/restaurants${id}` ||
           `http://localhost:4444/api/restaurants/${id}`
         );
         console.log(response.data.restaurant)
@@ -42,8 +42,8 @@ const SelectedRestaurant = () => {
   }, [id]);
 
   const coverImageSrc = selectedRestaurant?.coverImage
-    ? `http://localhost:4444${selectedRestaurant.coverImage}`
-    : "https://via.placeholder.com/900x600?text=Restaurant";
+    ? `${process.env.BASE_URL}${selectedRestaurant.coverImage}`
+    : `http://localhost:4444${selectedRestaurant.coverImage}`;
 
   return (
     <div className="min-h-screen bg-slate-50 px-4 py-10 text-slate-900">
@@ -81,7 +81,7 @@ const SelectedRestaurant = () => {
                     {selectedRestaurant.name}
                   </h1>
                   <div className="flex flex-wrap gap-2 text-sm text-slate-600">
-                    <span className="rounded-full bg-red-500 text-white px-3 py-1 capitalize text-slate-700">
+                    <span className="rounded-full bg-red-500 text-white px-3 py-1 capitalize">
                       {selectedRestaurant.cusine || "Multi-cuisine"}
                     </span>
                     <span className="rounded-full bg-green-500 text-white px-3 py-1">
@@ -93,7 +93,7 @@ const SelectedRestaurant = () => {
                   <button className="rounded-full border border-slate-200 px-6 py-3 text-sm font-semibold text-white transition bg-blue-600 hover:border-slate-900 hover:text-slate-900">
                     Share
                   </button>
-                  <button className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white bg-slate-800 transition hover:bg-slate-800">
+                  <button className="rounded-full bg-slate-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-slate-800">
                     Order Online
                   </button>
                 </div>
@@ -199,7 +199,7 @@ const SelectedRestaurant = () => {
                     >
                       <img
                         className="h-40 w-full object-cover transition duration-500 group-hover:scale-105"
-                        src={`http://localhost:4444${imagePath}`}
+                        src={`${process.env.BASE_URL}${imagePath}` || `http://localhost:4444${imagePath}`}
                         alt={`${selectedRestaurant.name} image ${index + 1}`}
                       />
                     </div>

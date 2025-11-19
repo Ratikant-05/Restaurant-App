@@ -62,6 +62,7 @@ const Signup = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
+        `${process.env.BASE_URL}/auth/signup` ||
         "http://localhost:4444/auth/signup",
         { username, email, password, contact, address },
         { withCredentials: true }

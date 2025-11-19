@@ -36,6 +36,7 @@ const Login = () => {
     setIsLoading(true);
     try {
       const response = await axios.post(
+        `${process.env.BASE_URL}/auth/login` ||
         "http://localhost:4444/auth/login",
         { email, password },
         { withCredentials: true }

@@ -54,6 +54,7 @@ const PostFoodItem = () => {
 
     try {
       const response = await axios.post(
+        `${process.env.BASE_URL}/food/add-food-item` ||
         "http://localhost:4444/food/add-food-item",
         foodItem,
         {

@@ -12,6 +12,7 @@ const TopBrands = () => {
     const fetchTopBrands = async () => {
       try {
         const response = await axios.get(
+          `${process.env.BASE_URL}/food/getAllTopBrands` ||
           "http://localhost:4444/food/getAllTopBrands"
         );
         // console.log(response)
@@ -107,7 +108,7 @@ const TopBrands = () => {
                     {!failedImages.has(brands._id) && brands.image ? (
                       <img
                         className="w-full h-full transition-transform duration-500 group-hover:scale-110 object-cover rounded-full"
-                        src={`http://localhost:4444${brands.image}`}
+                        src={`${process.env.BASE_URL}${brands.image}` || `http://localhost:4444${brands.image}`}
                         alt={brands.name}
                         onError={() => {
                           setFailedImages((prev) => new Set(prev).add(brands._id));

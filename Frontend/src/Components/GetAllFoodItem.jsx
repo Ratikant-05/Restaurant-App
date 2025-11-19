@@ -12,6 +12,7 @@ const GetAllFoodItems = () => {
     const fetchAllFoodItems = async () => {
       try {
         const response = await axios.get(
+          `${process.env.BASE_URL}/food/get-all-food-items` ||
           "http://localhost:4444/food/get-all-food-items"
         );
         setAllFoodItems(response.data.data);
@@ -70,6 +71,7 @@ const GetAllFoodItems = () => {
     try {
       setLoadingDetails(true);
       const response = await axios.get(
+        `${process.env.BASE_URL}/food/get-food-item/${foodId}` ||
         `http://localhost:4444/food/get-food-item/${foodId}`
       );
       setSelectedFoodItem(response.data.data);
@@ -116,7 +118,7 @@ const GetAllFoodItems = () => {
                   <img
                     style={{ borderRadius: "100%" }}
                     className="w-full h-full object-cover"
-                    src={`http://localhost:4444${foodItem.image}`}
+                    src={`${process.env.BASE_URL}${foodItem.image}`|| `http://localhost:4444${foodItem.image}`}
                     alt={foodItem.name}
                     onError={(e) => {
                       e.target.src =

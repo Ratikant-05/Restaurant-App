@@ -11,6 +11,7 @@ const GetAllCusines = () => {
     const fetchCusines = async () => {
       try {
         const response = await axios.get(
+          `${process.env.BASE_URL}/food/getAllCusineCategories` ||
           "http://localhost:4444/food/getAllCusineCategories"
         );
         console.log(response.data.data)
@@ -105,7 +106,7 @@ const GetAllCusines = () => {
                     {!failedImages.has(cusine._id) && cusine.image ? (
                       <img
                         className="w-full h-full transition-transform duration-500 group-hover:scale-110 object-cover rounded-full"
-                        src={`http://localhost:4444${cusine.image}`}
+                        src={`${process.env.BASE_URL}${cusine.image}` ||`http://localhost:4444${cusine.image}`}
                         alt={cusine.cusineCategory || cusine.name}
                         onError={() => {
                           setFailedImages((prev) => new Set(prev).add(cusine._id));

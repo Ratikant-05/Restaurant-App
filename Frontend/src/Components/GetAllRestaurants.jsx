@@ -11,6 +11,7 @@ const GetAllRestaurants = () => {
     const fetchRestaurants = async () => {
       try {
         const response = await axios.get(
+          `${process.env.BASE_URL}/api/restaurants` ||
           "http://localhost:4444/api/restaurants"
         );
         console.log(response.data.restaurants)
@@ -89,7 +90,7 @@ const GetAllRestaurants = () => {
                 <div className="relative overflow-hidden h-48 bg-gray-200">
                   <img
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    src={`http://localhost:4444${restaurant.coverImage}`}
+                    src={`${process.env.BASE_URL}${restaurant.coverImage}` || `http://localhost:4444${restaurant.coverImage}`}
                     alt={restaurant.name}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
