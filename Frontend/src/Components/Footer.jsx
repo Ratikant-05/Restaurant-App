@@ -142,7 +142,6 @@ const Footer = () => {
                   alt="Download on the App Store"
                   className="h-12 w-auto cursor-pointer hover:opacity-80 transition-opacity duration-200"
                   onError={(e) => {
-                    // Fallback if the image doesn't load
                     e.target.style.display = 'none';
                   }}
                 />
@@ -152,7 +151,6 @@ const Footer = () => {
 
         </div>
 
-        {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
