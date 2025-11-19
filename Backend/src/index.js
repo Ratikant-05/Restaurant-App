@@ -38,6 +38,10 @@ app.use("/cart", cartRouter);
 app.use("/user", userRouter);
 app.use("/payment", paymentRouter);
 
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 const PORT = process.env.port;
 mongoose
   .connect(`${process.env.MONGODB_URI}`, {
