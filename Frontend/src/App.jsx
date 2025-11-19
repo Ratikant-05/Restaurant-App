@@ -8,11 +8,12 @@ import Profile from './Components/Pages/Profile'
 import SelectedRestaurant from './Components/Pages/SelectedRestaurant'
 import Footer from './Components/Footer'
 import TopBrands from './Components/TopBrands'
+// import AddRestaurant from './Components/AddRestaurant'
 
 function App() {
-
   return (
     <>
+    {/* <AddRestaurant/> */}
     <Router>
       <Navbar/>
       <Routes>
@@ -25,8 +26,6 @@ function App() {
     </Router>
     <TopBrands/>
     <Footer/>
-    {/* offers for you */}
-    {/* restuarants one by one with infinite scroll */}
     </>
   )
 }

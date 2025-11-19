@@ -14,7 +14,7 @@ const TopBrands = () => {
         const response = await axios.get(
           "http://localhost:4444/food/getAllTopBrands"
         );
-        console.log(response)
+        // console.log(response)
         setTopBrands(response.data.data);
       } catch (error) {
         setError("Failed to get Top Brands");

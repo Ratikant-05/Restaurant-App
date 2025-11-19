@@ -13,6 +13,7 @@ const GetAllCusines = () => {
         const response = await axios.get(
           "http://localhost:4444/food/getAllCusineCategories"
         );
+        console.log(response.data.data)
         setCusines(response.data.data);
       } catch (error) {
         setError("Failed to get cusines");

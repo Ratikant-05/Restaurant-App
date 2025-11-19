@@ -64,7 +64,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-5xl md:text-6xl font-bold mb-6">
-              About Food Panda
+              About Rapid Eats
             </h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-95">
               Your trusted food delivery partner, bringing delicious meals from

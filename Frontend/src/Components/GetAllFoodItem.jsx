@@ -15,7 +15,7 @@ const GetAllFoodItems = () => {
           "http://localhost:4444/food/get-all-food-items"
         );
         setAllFoodItems(response.data.data);
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setError(null);
       } catch (error) {
         console.error(error);

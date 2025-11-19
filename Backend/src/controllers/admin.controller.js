@@ -1,44 +1,54 @@
 import Restaurant from "../models/restaurant.model.js";
 import mongoose from "mongoose";
 
-export const postRestaurant = async (req, res, next) => {
+export const postRestaurant = async (req, res) => {
   try {
-    const { name, address, email, contact } = req.body;
-     const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
-    const { userId } = req.body;
+    const {
+      name,
+      address,
+      email,
+      contact,
+      cusines,
+      restaurantStatus,
+      userId,
+    } = req.body;
 
-    if (!name || !email || !address || !contact) {
-      return res.status(400).json({
-        msg: "Insufficient Details",
-      });
+    const uploadedImages = Array.isArray(req.files?.images)
+      ? req.files.images.map((file) => `/uploads/${file.filename}`)
+      : [];
+    const coverImagePath = req.files?.coverImage?.[0]
+      ? `/uploads/${req.files.coverImage[0].filename}`
+      : "";
+
+    if (!name || !email || !address || !contact || cusines) {
+      return res.status(400).json({ msg: "Insufficient Details" });
     }
 
-    // Validate userId if provided, otherwise use a default ObjectId
     let ownerId;
     if (userId && mongoose.Types.ObjectId.isValid(userId)) {
       ownerId = userId;
     } else {
-      // Create a temporary ObjectId for testing purposes
       ownerId = new mongoose.Types.ObjectId();
     }
 
-    const existingRestaurant = await Restaurant.findOne({
-      $or: [{ email }],
-    });
+    const existingRestaurant = await Restaurant.findOne({ email });
 
     if (existingRestaurant) {
       return res.status(400).json({
-        msg: "Restaurant with one of the details already exists",
+        msg: "Restaurant with this email already exists",
       });
     }
 
-    let newRestaurant = await Restaurant.create({
-      ownerId: ownerId,
+    const newRestaurant = await Restaurant.create({
+      ownerId,
       name,
       address,
       email,
-      image:imagePath,
       contact,
+      cusines,
+      restaurantStatus,
+      coverImage: coverImagePath,
+      images: uploadedImages,
     });
 
     res.status(200).json({

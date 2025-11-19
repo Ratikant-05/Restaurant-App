@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
           <div className="space-y-4">
-            <h2 className="text-white text-3xl font-bold">Foodie</h2>
+            <h2 className="text-white text-3xl font-bold">Rapid Eats</h2>
             <p className="text-sm leading-6 text-gray-400 max-w-xs">
               Delivering delicious food with speed and quality. Fresh ingredients, fast delivery, 
               and exceptional service to satisfy your cravings.
@@ -156,7 +156,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Foodie. All rights reserved.
+              © {new Date().getFullYear()} Rapid Eats. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">

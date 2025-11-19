@@ -39,7 +39,7 @@ app.use('/payment',paymentRouter)
 
 
 const PORT = process.env.port
-mongoose.connect(`mongodb://127.0.0.1:27017/${process.env.dbName}`)
+mongoose.connect(`${process.env.MONGODB_URI}`)
 .then(()=>{
     app.listen(PORT,()=>{
         console.log('listening at port', PORT)

@@ -102,7 +102,7 @@ const Signup = () => {
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Create Account</h2>
             <p className="mt-1 text-sm sm:text-base text-gray-600">
-              Join Food Panda and start ordering delicious food
+              Join Rapid Eats and start ordering delicious food
             </p>
           </div>
 

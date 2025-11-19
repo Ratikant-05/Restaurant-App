@@ -116,7 +116,7 @@ function Navbar() {
   return (
     <nav className="navbar">
       <NavLink className="logo" to="/">
-        <span className="logo-text">Food Panda</span>
+        <span className="logo-text font-extrabold">Rapid Eats</span>
       </NavLink>
 
       <div className="search-container" ref={searchRef}>

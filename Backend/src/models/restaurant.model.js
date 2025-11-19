@@ -29,11 +29,13 @@ const restaurantSchema = new Schema(
       type: String,
       required: true,
     },
-    image: {
-      type: String,
-      required: false,
-      default: "",
-    },
+    images: [{ type: String }],
+    cusines:
+        {
+          type: String,
+          trim: true,
+          lowercase: true,
+        },
     rating: {
       type: Number,
     },
@@ -61,8 +63,9 @@ const restaurantSchema = new Schema(
       },
     ],
     restaurantStatus: {
-      type: Boolean,
-      default: true,
+      type: String,
+      enum: ["Open", "Close"],
+      default: "Open",
     },
   },
   {
