@@ -45,8 +45,6 @@ app.get("/health", (req, res) => {
 const PORT = process.env.port;
 mongoose
   .connect(`${process.env.MONGODB_URI}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
     maxPoolSize: 10,
   })
   .then(() => {
