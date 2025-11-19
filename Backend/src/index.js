@@ -47,7 +47,7 @@ mongoose
   .connect(`${process.env.MONGODB_URI}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    poolSize: 10,
+    maxPoolSize: 10,
   })
   .then(() => {
     app.listen(PORT, () => {
