@@ -26,9 +26,13 @@ app.use(
   })
 );
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "../Frontend/dist")));
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
+app.get("*", (_, res) =>
+  res.sendFile(path.join(__dirname, "../Frontend/dist/index.html"))
+);
 // routes
 app.use("/auth", loginRouter);
 app.use("/food", foodRouter);
