@@ -16,7 +16,7 @@ export const createOrder = async (req, res) => {
     if (!keyId || !keySecret) {
       return res.status(500).json({
         success: false,
-        msg: "Razorpay credentials not configured"
+        msg: "Razorpay credentials"
       });
     }
 
@@ -82,7 +82,7 @@ export const verifyPayment = async (req, res) => {
     if (!keySecret) {
       return res.status(500).json({
         success: false,
-        msg: "Razorpay key secret not configured"
+        msg: "Razorpay key secret not configugreen"
       });
     }
 
@@ -132,7 +132,7 @@ export const getPaymentDetails = async (req, res) => {
     if (!keyId || !keySecret) {
       return res.status(500).json({
         success: false,
-        msg: "Razorpay credentials not configured"
+        msg: "Razorpay credentials not configugreen"
       });
     }
 

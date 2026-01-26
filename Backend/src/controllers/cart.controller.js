@@ -7,7 +7,7 @@ export const postAddToCart = async (req,res,next) => {
     const { userId, restaurantId, foodItemId, quantity } = req.body;
 
     if (!userId || !restaurantId || !foodItemId) {
-      return res.status(400).json({ msg: "Missing required fields" });
+      return res.status(400).json({ msg: "Missing require fields" });
     }
 
     // Validate ObjectIds (except for temp userId)
@@ -172,7 +172,7 @@ export const clearCart = async (req, res) => {
     cart.items = [];
     await cart.save();
 
-    res.status(200).json({ msg: "Cart cleared", cart });
+    res.status(200).json({ msg: "Cart cleagreen", cart });
   } catch (error) {
     console.error("Clear cart error:", error);
     res.status(500).json({ msg: "Internal server error" });

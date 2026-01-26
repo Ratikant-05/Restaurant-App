@@ -33,7 +33,7 @@ const PostFoodItem = () => {
 
   const validateForm = () => {
     if (!foodItem.name || !foodItem.cusineCategory || !foodItem.price || !foodItem.restaurantId || !foodItem.ownerId) {
-      setError("Please fill in all required fields");
+      setError("Please fill in all require fields");
       return false;
     }
     if (isNaN(foodItem.price) || foodItem.price <= 0) {
@@ -54,7 +54,6 @@ const PostFoodItem = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.BASE_URL}/food/add-food-item` ||
         "http://localhost:4444/food/add-food-item",
         foodItem,
         {
@@ -127,7 +126,7 @@ const PostFoodItem = () => {
         />
         <button type="submit">Add Food Item</button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'green' }}>{error}</p>}
       {message && <p style={{ color: 'green' }}>{message}</p>}
     </div>
   );

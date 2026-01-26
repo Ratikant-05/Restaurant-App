@@ -30,7 +30,7 @@ const AddTopBrand = () => {
 
   const validateForm = () => {
     if (!brand.name || !brand.restaurantId || !brand.ownerId) {
-      setError("Please fill in all required fields");
+      setError("Please fill in all require fields");
       return false;
     }
     return true;
@@ -47,12 +47,11 @@ const AddTopBrand = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.BASE_URL}/food/add-top-brands` ||
         "http://localhost:4444/food/add-top-brands",
         brand,
         {
           headers: {
-            "Content-Type": "multipart/form-data"
+            "Content-Type": "include"
           }
         }
       );
@@ -99,7 +98,7 @@ const AddTopBrand = () => {
         />
         <button type="submit">Add Brand</button>
       </form>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: 'green' }}>{error}</p>}
       {message && <p style={{ color: 'green' }}>{message}</p>}
     </div>
   );

@@ -3,22 +3,22 @@ import mongoose, {Schema} from 'mongoose'
 const BrandSchema = new Schema({
   name: {
     type: String, 
-    required: true
+    require: true
   },
   image:{
     type: String,
-    required:false,
+    require:false,
     default:""
   },
   restaurantId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Restaurant',
-    required: true
+    require: true
   },
   ownerId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
-    required:true
+    require:true
   }
 });
 

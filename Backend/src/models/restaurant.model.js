@@ -4,30 +4,30 @@ const restaurantSchema = new Schema(
   {
     ownerId: {
       type: Schema.Types.ObjectId,
-      required: true,
+      require: true,
       ref: "User",
     },
     name: {
       type: String,
       lowercase: true,
-      required: true,
+      require: true,
     },
     address: {
       type: String,
       lowercase: true,
-      required: true,
+      require: true,
       unique: false,
     },
     email: {
       type: String,
-      required: true,
+      require: true,
       unique: true,
       lowercase: true,
       trim: true,
     },
     contact: {
       type: String,
-      required: true,
+      require: true,
     },
     images: [{ type: String }],
     cusines:

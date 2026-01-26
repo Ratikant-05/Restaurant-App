@@ -12,7 +12,6 @@ const GetAllFoodItems = () => {
     const fetchAllFoodItems = async () => {
       try {
         const response = await axios.get(
-          `${process.env.BASE_URL}/food/get-all-food-items` ||
           "http://localhost:4444/food/get-all-food-items"
         );
         setAllFoodItems(response.data.data);
@@ -34,7 +33,7 @@ const GetAllFoodItems = () => {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-gray-200 border-t-green-600 rounded-full animate-spin"></div>
           <p className="text-gray-600 text-lg">Loading food items...</p>
         </div>
       </div>
@@ -44,9 +43,9 @@ const GetAllFoodItems = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <div className="text-center p-6 bg-red-50 border border-red-200 rounded-lg max-w-md">
+        <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg max-w-md">
           <svg
-            className="w-12 h-12 text-red-500 mx-auto mb-4"
+            className="w-12 h-12 text-green-500 mx-auto mb-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -58,10 +57,10 @@ const GetAllFoodItems = () => {
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h3 className="text-red-700 text-lg font-semibold mb-2">
+          <h3 className="text-green-700 text-lg font-semibold mb-2">
             Oops! Something went wrong
           </h3>
-          <p className="text-red-600">{error}</p>
+          <p className="text-green-600">{error}</p>
         </div>
       </div>
     );
@@ -71,7 +70,6 @@ const GetAllFoodItems = () => {
     try {
       setLoadingDetails(true);
       const response = await axios.get(
-        `${process.env.BASE_URL}/food/get-food-item/${foodId}` ||
         `http://localhost:4444/food/get-food-item/${foodId}`
       );
       setSelectedFoodItem(response.data.data);
@@ -114,11 +112,11 @@ const GetAllFoodItems = () => {
               onClick={() => getFoodItemById(foodItem._id)}
             >
               <div className="relative mb-4 transition-transform duration-300 group-hover:scale-105">
-                <div className="w-[120px] h-[120px] rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 ring-2 ring-transparent group-hover:ring-blue-500 group-hover:ring-offset-2">
+                <div className="w-[120px] h-[120px] rounded-full overflow-hidden shadow-lg group-hover:shadow-xl transition-shadow duration-300 ring-2 ring-transparent group-hover:ring-green-500 group-hover:ring-offset-2">
                   <img
                     style={{ borderRadius: "100%" }}
                     className="w-full h-full object-cover"
-                    src={`${process.env.BASE_URL}${foodItem.image}`|| `http://localhost:4444${foodItem.image}`}
+                    src={`http://localhost:4444${foodItem.image}`}
                     alt={foodItem.name}
                     onError={(e) => {
                       e.target.src =
@@ -129,7 +127,7 @@ const GetAllFoodItems = () => {
               </div>
 
               <div className="text-center w-full px-2">
-                <h3 className="text-base font-semibold text-gray-900 capitalize mb-1 line-clamp-2 group-hover:text-blue-600 transition-colors duration-200">
+                <h3 className="text-base font-semibold text-gray-900 capitalize mb-1 line-clamp-2 group-hover:text-green-600 transition-colors duration-200">
                   {foodItem.name}
                 </h3>
                 {foodItem.description && (
@@ -137,7 +135,7 @@ const GetAllFoodItems = () => {
                     {foodItem.description}
                   </p>
                 )}
-                <span className="text-lg font-bold text-blue-600">
+                <span className="text-lg font-bold text-green-600">
                   ₹{foodItem.price}
                 </span>
               </div>
@@ -149,7 +147,7 @@ const GetAllFoodItems = () => {
       {loadingDetails && (
         <div className="flex justify-center items-center py-8">
           <div className="flex flex-col items-center gap-2">
-            <div className="w-8 h-8 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+            <div className="w-8 h-8 border-4 border-gray-200 border-t-green-600 rounded-full animate-spin"></div>
             <p className="text-gray-600 text-sm">Loading details...</p>
           </div>
         </div>
@@ -157,7 +155,7 @@ const GetAllFoodItems = () => {
 
       {selectedFoodItem && !loadingDetails && (
         <div className="mt-12 bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
-          <div className="bg-gradient-to-r from-blue-500 to-purple-600 px-6 py-4">
+          <div className="bg-gradient-to-r from-green-500 to-purple-600 px-6 py-4">
             <h3 className="text-2xl font-bold text-white">
               Food Item Details
             </h3>
@@ -195,7 +193,7 @@ const GetAllFoodItems = () => {
                 <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
                   Price
                 </h4>
-                <p className="text-2xl font-bold text-blue-600">
+                <p className="text-2xl font-bold text-green-600">
                   ₹{selectedFoodItem.price}
                 </p>
               </div>

@@ -1,5 +1,5 @@
 import express from 'express'
-import { getAllReviews, getDeleteReview, getReview, postAddReview, postUpdateReview } from '../controllers/user.controller.js';
+import { getAllReviews, getDeleteReview, getReview, postAddReview, postContact, postUpdateReview } from '../controllers/user.controller.js';
 
 const router = express.Router()
 
@@ -8,5 +8,6 @@ router.post('/update-review/:reviewId',postUpdateReview);
 router.get('/delete-review/:reviewId',getDeleteReview);
 router.get('/get-all-reviews',getAllReviews);
 router.get('/get-review/:reviewId',getReview);
+router.post('/contact', postContact);
 
 export default router

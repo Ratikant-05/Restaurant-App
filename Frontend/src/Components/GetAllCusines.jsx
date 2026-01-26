@@ -11,7 +11,6 @@ const GetAllCusines = () => {
     const fetchCusines = async () => {
       try {
         const response = await axios.get(
-          `${process.env.BASE_URL}/food/getAllCusineCategories` ||
           "http://localhost:4444/food/getAllCusineCategories"
         );
         console.log(response.data.data)
@@ -27,9 +26,9 @@ const GetAllCusines = () => {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-[300px]">
+      <div className="flex justify-center items-center min-h-75">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-gray-200 border-t-green-600 rounded-full animate-spin"></div>
           <p className="text-gray-600 text-lg">Loading cuisines...</p>
         </div>
       </div>
@@ -38,10 +37,10 @@ const GetAllCusines = () => {
 
   if (error) {
     return (
-      <div className="flex justify-center items-center min-h-[300px]">
-        <div className="text-center p-6 bg-red-50 border border-red-200 rounded-lg max-w-md">
+      <div className="flex justify-center items-center min-h-75">
+        <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg max-w-md">
           <svg
-            className="w-12 h-12 text-red-500 mx-auto mb-4"
+            className="w-12 h-12 text-green-500 mx-auto mb-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -53,10 +52,10 @@ const GetAllCusines = () => {
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h3 className="text-red-700 text-lg font-semibold mb-2">
+          <h3 className="text-green-700 text-lg font-semibold mb-2">
             Oops! Something went wrong
           </h3>
-          <p className="text-red-600">{error}</p>
+          <p className="text-green-600">{error}</p>
         </div>
       </div>
     );
@@ -93,36 +92,35 @@ const GetAllCusines = () => {
             `}
           </style>
           <ul
-            style={{ paddingInlineStart: 0 }}
-            className="flex gap-6 snap-x snap-mandatory cuisine-scroll"
+            className="flex gap-6 snap-x snap-mandatory cuisine-scroll py-4"
           >
             {cusines.map((cusine) => (
               <li
                 key={cusine._id}
-                className="flex flex-col items-center snap-start min-w-[180px] sm:min-w-[200px] group cursor-pointer"
+                className="flex flex-col items-center snap-start min-w-45 sm:min-w-50 group cursor-pointer"
               >
-                <div className="relative overflow-hidden rounded-full shadow-lg hover:shadow-xl transition-all duration-300 mb-3 ring-2 ring-transparent group-hover:ring-blue-500 group-hover:ring-offset-2">
-                  <div className="relative w-[160px] h-[160px] sm:w-[180px] sm:h-[180px] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-full">
+                <div className="relative overflow-hidden rounded-full shadow-lg hover:shadow-xl transition-all duration-300 mb-3 ring-2 ring-transparent group-hover:ring-green-500 group-hover:ring-offset-2">
+                  <div className="relative w-40 h-40 sm:w-45 sm:h-45 bg-linear-to-br from-gray-100 to-gray-200 flex items-center justify-center rounded-full">
                     {!failedImages.has(cusine._id) && cusine.image ? (
                       <img
                         className="w-full h-full transition-transform duration-500 group-hover:scale-110 object-cover rounded-full"
-                        src={`${process.env.BASE_URL}${cusine.image}` ||`http://localhost:4444${cusine.image}`}
+                        src={`http://localhost:4444${cusine.image}`}
                         alt={cusine.cusineCategory || cusine.name}
                         onError={() => {
                           setFailedImages((prev) => new Set(prev).add(cusine._id));
                         }}
                       />
                     ) : (
-                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-purple-500 text-white text-4xl font-bold rounded-full">
+                      <div className="w-full h-full flex items-center justify-center bg-linear-to-br from-green-400 to-purple-500 text-white text-4xl font-bold rounded-full">
                         {(cusine.cusineCategory || cusine.name || "?")
                           .charAt(0)
                           .toUpperCase()}
                       </div>
                     )}
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full pointer-events-none"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full pointer-events-none"></div>
                 </div>
-                <h3 className="text-center text-gray-900 font-semibold text-base sm:text-lg capitalize group-hover:text-blue-600 transition-colors duration-200 px-2">
+                <h3 className="text-center text-gray-900 font-semibold text-base sm:text-lg capitalize group-hover:text-green-600 transition-colors duration-200 px-2">
                   {cusine.cusineCategory || cusine.name}
                 </h3>
               </li>

@@ -1,5 +1,6 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
+import jwt from 'jsonwebtoken'
 
 const generateUserTokens = async (user_id) => {
   const user = await User.findById(user_id);
@@ -31,11 +32,11 @@ export const postSignUp = async (req, res, next) => {
     }
 
     let newUser = await User.create({
-      username: username,
-      email: email,
-      password: password,
-      contact: contact,
-      address: address,
+      username,
+      email,
+      password,
+      contact,
+      address,
     });
 
     return res.status(200).json(newUser);
@@ -49,23 +50,22 @@ export const postSignUp = async (req, res, next) => {
 
 export const postLogin = async (req, res, next) => {
   try {
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
-    if (!((username || email) && password)) {
+    if (!email || !password) {
       return res.status(400).json({
         msg: "User details missing",
       });
     }
 
-    const existingUser = await User.findOne({
-      $or: [{ username }, { email }],
-    });
+    const existingUser = await User.findOne({ email });
 
     if (!existingUser) {
       return res.status(400).json({ error: "User does not exist. Please Signup" });
     }
 
     const isMatch = await bcrypt.compare(password, existingUser.password);
+    console.log(isMatch)
 
     if (!isMatch) {
       return res.status(400).json({
@@ -75,7 +75,7 @@ export const postLogin = async (req, res, next) => {
 
     const { accessToken, refreshToken } = await generateUserTokens(existingUser._id);
     const options = {
-      httpOnly: false,
+      httpOnly: true,
       secure: false,
       sameSite: "lax",
       path: "/",
@@ -86,11 +86,14 @@ export const postLogin = async (req, res, next) => {
       .cookie("accessToken", accessToken, options)
       .cookie("refreshToken", refreshToken, options)
       .json({
-        existingUser,
-        message: `successfully logged in ${existingUser.username}`,
-        accessToken,
-        refreshToken,
+        message: `Successfully logged in ${existingUser.username}`,
+        user: {
+          id: existingUser._id,
+          username: existingUser.username,
+          email: existingUser.email,
+        },
       });
+
   } catch (error) {
     return res.status(500).json({
       msg: "Internal Server Error",
@@ -136,3 +139,36 @@ export const postLogout = async (req, res, next) => {
     });
   }
 };
+
+export const getMe = async (req, res) => {
+  try {
+    const token = req.cookies?.accessToken;
+    if (!token) {
+      return res.status(401).json({ authenticated: false });
+    }
+
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_KEY);
+
+    const user = await User.findById(decoded.userId).select("-password");
+
+    if (!user) {
+      return res.status(401).json({ authenticated: false });
+    }
+
+    return res.status(200).json({
+      authenticated: true,
+      user,
+    });
+  } catch (error) {
+    console.log("getMe error:", error.message);
+    return res.status(401).json({ authenticated: false });
+  }
+};
+
+export const postProfile = async (req,res) => {
+  try {
+    return res.status(200).json({msg: "your profile"})
+  } catch (error) {
+    console.log(error.message)
+  }
+}

@@ -2,15 +2,17 @@ import React from 'react'
 import GetAllFoodItems from '../GetAllFoodItem'
 import GetAllRestaurants from '../GetAllRestaurants'
 import GetAllCusines from '../GetAllCusines'
-import ImageSlider from '../ImageSlider'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
 
 const Home = () => {
   return (
     <div>
-      <ImageSlider/>
-      <GetAllCusines/>
-      <GetAllRestaurants/>
-      <GetAllFoodItems/>
+      <Navbar />
+      <GetAllCusines />
+      <GetAllRestaurants />
+      <GetAllFoodItems />
+      <Footer />
     </div>
   )
 }

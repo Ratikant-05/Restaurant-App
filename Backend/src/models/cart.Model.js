@@ -4,11 +4,11 @@ const cartItemSchema = new Schema({
   foodItemId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "FoodItem",
-    required: true,
+    require: true,
   },
   quantity: {
     type: Number,
-    required: true,
+    require: true,
     default: 1,
     min: 1,
   },
@@ -18,13 +18,13 @@ const cartSchema = new mongoose.Schema({
   userId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    required: true,
+    require: true,
     unique: true,
   },
   restaurantId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Restaurant",
-    required: true,
+    require: true,
   },
   items: [cartItemSchema],
   createdAt: {

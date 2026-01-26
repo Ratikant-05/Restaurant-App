@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
 
           <div className="space-y-4">
-            <h2 className="text-white text-3xl font-bold">Rapid Eats</h2>
+            <h2 className="text-white text-3xl font-bold">Food Presentation</h2>
             <p className="text-sm leading-6 text-gray-400 max-w-xs">
               Delivering delicious food with speed and quality. Fresh ingredients, fast delivery, 
               and exceptional service to satisfy your cravings.
@@ -16,7 +16,7 @@ const Footer = () => {
             <div className="flex gap-4 pt-2">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-600 transition-colors duration-200 group"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors duration-200 group"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -25,7 +25,7 @@ const Footer = () => {
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-pink-600 transition-colors duration-200 group"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors duration-200 group"
                 aria-label="Instagram"
               >
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -34,7 +34,7 @@ const Footer = () => {
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-blue-400 transition-colors duration-200 group"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-400 transition-colors duration-200 group"
                 aria-label="Twitter"
               >
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -43,7 +43,7 @@ const Footer = () => {
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-red-600 transition-colors duration-200 group"
+                className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-green-600 transition-colors duration-200 group"
                 aria-label="YouTube"
               >
                 <svg className="w-5 h-5 text-gray-400 group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
@@ -154,7 +154,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-sm">
-              © {new Date().getFullYear()} Rapid Eats. All rights reserved.
+              © {new Date().getFullYear()} Food Presentation. All rights reserved.
             </p>
             <div className="flex gap-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-white transition-colors duration-200">

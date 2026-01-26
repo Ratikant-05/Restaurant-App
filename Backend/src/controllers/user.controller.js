@@ -1,4 +1,5 @@
 import Restaurant from "../models/restaurant.model.js";
+import Contact from '../models/contact.model.js'
 
 export const postAddReview = async (req, res, next) => {
   const { restaurant_id, rating, message } = req.body;
@@ -167,6 +168,36 @@ export const getReview = async (req, res, next) => {
   } catch (error) {
     res.status(500).json({
       msg: error,
+    });
+  }
+};
+
+export const postContact = async (req, res, next) => {
+  try {
+    const { username, email, contact, message } = req.body;
+
+    if (!username || !email || !contact || !message) {
+      return res.status(400).json({
+        msg: "Please fill out all the inputs",
+      });
+    }
+
+    const newContact = await Contact.create({
+      username,
+      email,
+      contact,
+      message,
+    });
+
+    return res.status(201).json({
+      msg: "Message sent successfully",
+      data: newContact,
+    });
+
+  } catch (error) {
+    console.error("Contact error:", error);
+    return res.status(500).json({
+      msg: "Something went wrong",
     });
   }
 };

@@ -151,7 +151,7 @@ export const postAddFoodItem = async (req, res) => {
     const { name, cusineCategory, description, price, restaurantId, ownerId } = req.body;
     const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
     if (!name || !price || !restaurantId || !cusineCategory) {
-      return res.status(400).json({ msg: "Missing required fields" });
+      return res.status(400).json({ msg: "Missing require fields" });
     }
 
     // Validate ObjectIds
@@ -191,7 +191,7 @@ export const postTopBrands = async (req, res) => {
     console.log(req.body)
     const imagePath = req.file ? `/uploads/${req.file.filename}` : "";
     if (!name || !restaurantId) {
-      return res.status(400).json({ msg: "Missing required fields" });
+      return res.status(400).json({ msg: "Missing require fields" });
     }
     if (!mongoose.Types.ObjectId.isValid(restaurantId)) {
       return res.status(400).json({ msg: "Invalid restaurant ID" });

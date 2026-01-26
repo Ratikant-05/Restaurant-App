@@ -11,7 +11,6 @@ const GetAllRestaurants = () => {
     const fetchRestaurants = async () => {
       try {
         const response = await axios.get(
-          `${process.env.BASE_URL}/api/restaurants` ||
           "http://localhost:4444/api/restaurants"
         );
         console.log(response.data.restaurants)
@@ -30,7 +29,7 @@ const GetAllRestaurants = () => {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
         <div className="flex flex-col items-center gap-4">
-          <div className="w-12 h-12 border-4 border-gray-200 border-t-blue-600 rounded-full animate-spin"></div>
+          <div className="w-12 h-12 border-4 border-gray-200 border-t-green-600 rounded-full animate-spin"></div>
           <p className="text-gray-600 text-lg">Loading restaurants...</p>
         </div>
       </div>
@@ -40,9 +39,9 @@ const GetAllRestaurants = () => {
   if (error) {
     return (
       <div className="flex justify-center items-center min-h-[400px]">
-        <div className="text-center p-6 bg-red-50 border border-red-200 rounded-lg max-w-md">
+        <div className="text-center p-6 bg-green-50 border border-green-200 rounded-lg max-w-md">
           <svg
-            className="w-12 h-12 text-red-500 mx-auto mb-4"
+            className="w-12 h-12 text-green-500 mx-auto mb-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -54,10 +53,10 @@ const GetAllRestaurants = () => {
               d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <h3 className="text-red-700 text-lg font-semibold mb-2">
+          <h3 className="text-green-700 text-lg font-semibold mb-2">
             Oops! Something went wrong
           </h3>
-          <p className="text-red-600">{error}</p>
+          <p className="text-green-600">{error}</p>
         </div>
       </div>
     );
@@ -90,14 +89,14 @@ const GetAllRestaurants = () => {
                 <div className="relative overflow-hidden h-48 bg-gray-200">
                   <img
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    src={`${process.env.BASE_URL}${restaurant.coverImage}` || `http://localhost:4444${restaurant.coverImage}`}
+                    src={`http://localhost:4444${restaurant.coverImage}`}
                     alt={restaurant.name}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-linear-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
 
                 <div className="p-4 flex-1 flex flex-col">
-                  <h3 className="text-xl font-semibold text-gray-900 capitalize mb-2 line-clamp-1 group-hover:text-blue-600 transition-colors duration-200">
+                  <h3 className="text-xl font-semibold text-gray-900 capitalize mb-2 line-clamp-1 group-hover:text-green-600 transition-colors duration-200">
                     {restaurant.name}
                   </h3>
 

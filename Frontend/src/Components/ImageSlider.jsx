@@ -17,7 +17,7 @@ const ImageSlider = () => {
     {
       image: "/slider-3.jpg",
       title: "Fast Delivery",
-      subtitle: "Get your food delivered in minutes",
+      subtitle: "Get your food delivegreen in minutes",
     },
     {
       image: "/slider-2.jpg",
