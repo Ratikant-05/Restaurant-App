@@ -8,8 +8,8 @@ import SelectedRestaurant from './Components/SelectedRestaurant'
 import ProtectedRoute from "./Components/ProtectedRoute";
 import About from './Components/Pages/About'
 import Contact from './Components/Pages/Contact'
-// import Footer from './Components/Footer'
-// import TopBrands from './Components/TopBrands'
+import Footer from './Components/Footer'
+import TopBrands from './Components/TopBrands'
 // import Cart from './Components/Cart'
 // import FoodItem from './Components/FoodItem'
 
@@ -31,10 +31,10 @@ function App() {
           <Route path='/selectedRestaurant/:id' element={<SelectedRestaurant />} />
         </Routes>
       </Router>
-      {/* <TopBrands/> */}
+              <TopBrands/>
       {/* <FoodItem name="Burger" price= "80" description= "This is a veg burger" qty="1" /> */}
       {/* <Cart/> */}
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }

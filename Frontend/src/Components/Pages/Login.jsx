@@ -60,7 +60,7 @@ const Login = () => {
   return (
     <section className="min-h-screen relative flex items-center justify-center px-6">
       <img
-        src="/public/bg-image.jpg"
+        src="/bg-image.jpg"
         alt="bg"
         className="fixed w-100% h-100% object-cover -z-10"
       />

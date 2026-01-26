@@ -48,7 +48,7 @@ const Navbar = () => {
         className="cursor-pointer hover:transform transition-transform duration-200 ease-out hover:translate-y-1"
         onClick={() => navigate("/home")}
       >
-        <img className='w-25' src="/public/logo.jpg" alt="logo" />
+        <img className='w-25' src="/logo.jpg" alt="logo" />
       </div>
 
       <div className="flex items-center gap-4">

@@ -50,7 +50,7 @@ const Signup = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center px-6">
       <img
-        src="/public/bg-image.jpg"
+        src="/bg-image.jpg"
         alt="bg"
         className="fixed inset-0 w-full h-full object-cover -z-10"
       />

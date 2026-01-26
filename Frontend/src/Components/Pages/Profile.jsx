@@ -61,7 +61,7 @@ const Profile = () => {
           <div className="flex justify-center mb-6">
             <div className="w-20 h-20 rounded-full border-3 border-green-500 overflow-hidden">
               <img
-                src="/public/user.png"
+                src="/user.png"
                 alt="user"
                 className="w-full h-full object-cover"
               />

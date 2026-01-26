@@ -12,7 +12,6 @@ const Home = () => {
       <GetAllCusines />
       <GetAllRestaurants />
       <GetAllFoodItems />
-      <Footer />
     </div>
   )
 }
